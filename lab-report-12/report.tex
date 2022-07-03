@@ -1,0 +1,240 @@
+\input{/home/nick/latex-preambles/xelatex.tex}
+
+\newcommand{\imagesPath}{.}
+
+\title{
+	\textbf{Δίκτυα Υπολογιστών} \\~\\
+	Εργαστηριακή Άσκηση 12 \\ 
+	Ασφάλεια
+}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Ονοματεπώνυμο:} Νικόλαος Παγώνας, el18175 & \textbf{Ομάδα:} 4 (Τρίτη εξ' αποστάσεως) \\
+		\hline
+		\textbf{Όνομα PC/ΛΣ:} nick-ubuntu/Ubuntu 20.04.3 LTS & \textbf{Ημερομηνία:} Τρίτη 18/01/2022 \\
+		\hline
+		\textbf{Διεύθυνση IP:} \verb|192.168.1.15| & \textbf{Διεύθυνση MAC:} \verb|3c:2c:30:e1:1c:55| \\
+		\hline
+	\end{tabular}
+
+	\section*{1. Πιστοποίηση αυθεντικότητας στο πρωτόκολλο HTTP}
+		
+		\subsection*{1.1}
+			Ο αριθμητικός κωδικός κατάστασης είναι 401 και η φράση είναι "Authorization Required".
+	
+		\subsection*{1.2}
+			Η επικεφαλίδα του δεύτερου μηνύματος περιέχει το επιπλέον πεδίο \verb|Authorization|.
+	
+		\subsection*{1.3}
+			Είναι Authorization: \verb|Basic ZWR1LWR5OnBhc3N3b3Jk|.
+	
+		\subsection*{1.4}
+			Το αποτέλεσμα της αποκωδικοποίησης είναι \verb|edu-dy:password|.
+	
+		\subsection*{1.5}
+			Ο μηχανισμός πιστοποίησης αυθεντικότητας που παρέχει το HTTP δεν παρέχει εμπιστευτικότητα, αφού δεν έχουμε κανενός είδους κρυπτογράφηση.
+	
+	\section*{2. Υπηρεσία SSH - Secure SHell}
+		\textbf{Σημείωση:} Επειδή για κάποιον λόγο το ssh από το μηχάνημά μας αποτύγχανε, συνδεθήκαμε στο VPN του ΕΜΠ για την εκτέλεση του ερωτήματος 2.
+	
+		\subsection*{2.1}
+			Το SSH χρησιμοποιεί TCP.
+	
+		\subsection*{2.2}
+			Χρησιμοποιούνται οι θύρες 22 και 46636.
+	
+		\subsection*{2.3}
+			Η θύρα που αντιστοιχεί στο SSH είναι η 22.
+	
+		\subsection*{2.4}
+			Η σύνταξη του φίλτρου είναι \verb|ssh|.
+	
+		\subsection*{2.5}
+			Η έκδοση πρωτοκόλλου SSH που χρησιμοποιεί ο εξυπηρετητής είναι η 2.0, ενώ η έκδοση του λογισμικού που χρησιμοποιεί είναι \verb|OpenSSH_6.6.1_hpn13v11|. Επίσης περιλαμβάνεται το σχόλιο  \verb|FreeBSD-20140420|.
+	
+		\subsection*{2.6}
+			Η έκδοση πρωτοκόλλου SSH που χρησιμοποιεί ο πελάτης είναι η 2.0, ενώ η έκδοση του λογισμικού που χρησιμοποιεί είναι \verb|OpenSSH_8.2p1|. Επίσης περιλαμβάνεται το σχόλιο \verb|Ubuntu-4ubuntu0.3|
+	
+		\subsection*{2.7}
+			Υπάρχουν 10 αλγόριθμοι στη λίστα. Οι δύο πρώτοι από τους αλγορίθμους αυτής της λίστας είναι οι \verb|curve25519-sha256| και \verb|curve25519-sha256@libssh.org|.
+	
+		\subsection*{2.8}
+			Υπάρχουν 18 αλγόριθμοι στη λίστα. Οι δύο πρώτοι από τους αλγορίθμους αυτής της λίστας είναι οι \verb|ecdsa-sha2-nistp256-cert-v01@openssh.com| και 
+			\verb|ecdsa-sha2-nistp384-cert-v01@openssh.com|
+	
+		\subsection*{2.9}
+			Οι δύο πρώτοι αλγόριθμοι είναι οι \verb|chacha20-poly1305@openssh.com| και \verb|aes128-ctr|.
+	
+		\subsection*{2.10}
+			Οι δύο πρώτοι αλγόριθμοι είναι οι \verb|umac-64-etm@openssh.com| και \verb|umac-128-etm@openssh.com|.
+	
+		\subsection*{2.11}
+			Οι δύο πρώτοι αλγόριθμοι είναι οι \verb|none| και \verb|zlib@openssh.com|.
+			
+		\subsection*{2.12}
+			Ο αλγόριθμος που θα χρησιμοποιηθεί είναι ο \verb|curve25519-sha256@libssh.org|, και αυτό φαίνεται επίσης στο πεδίο "Key Exchange", σε παρένθεση \verb|(method:curve25519-sha256@libssh.org)|.
+	
+		\subsection*{2.13}
+			Ο αλγόριθμος που θα χρησιμοποιηθεί είναι ο \verb|chacha20-poly1305@openssh.com|.
+	
+		\subsection*{2.14}
+			Ο αλγόριθμος που θα χρησιμοποιηθεί είναι ο \verb|umac-64-etm@openssh.com|.
+	
+		\subsection*{2.15}
+			Ο αλγόριθμος που θα χρησιμοποιηθεί είναι ο \verb|none|.
+	
+		\subsection*{2.16}
+			Το Wireshark εμφανίζει τους επιλεχθέντες αλγορίθμους σε παρένθεση δίπλα από το πεδίο SSH Version 2.
+	
+		\subsection*{2.17}
+			Καταγράψαμε τους τύπους:
+			
+			\begin{itemize}
+				\item Elliptic Curve Diffie-Hellman Key Exchange Init
+				\item Elliptic Curve Diffie-Hellman Key Exchange Reply
+				\item New Keys
+				\item Encrypted packet
+			\end{itemize}
+	
+		\subsection*{2.18}
+			Δεν μπορώ, γιατί τα πακέτα είναι κρυπτογραφημένα.
+	
+		\subsection*{2.19}
+			To SSH είναι πιο ασφαλές από πρωτόκολλα όπως το HTTP ή το TELNET. Συγκεκριμένα, όσον αφορά την πιστοποίηση αυθεντικότητας, αυτή γίνεται με την χρήση public-private keys, η εμπιστευτικότητα επιτυγχάνεται με την κρυπτογράφηση των μηνυμάτων, ενώ η ακεραιότητα εξασφαλίζεται με το MAC.
+	
+		
+	\section*{3. Υπηρεσία HTTPS}
+
+		\subsection*{3.1}
+			Η σύνταξη του φίλτρου σύλληψης που χρησιμοποιήσαμε είναι \verb|host bbb2.cn.ntua.gr|.
+
+		\subsection*{3.2}
+			Η σύνταξη του φίλτρου είναι \verb|tcp.flags.syn == 1 && tcp.flags.ack == 0|.
+
+		\subsection*{3.3}
+			Οι συνδέσεις έγιναν στις θύρες 80 και 443.
+
+		\subsection*{3.4}
+			Η θύρα 80 αντιστοιχεί στο HTTP και η θύρα 443 στο HTTPS.
+
+		\subsection*{3.5}
+			Στην περίπτωση HTTP έγιναν 6 συνδέσεις, ενώ στην περίπτωση HTTPS έγινε 1 σύνδεση.
+
+		\subsection*{3.6}
+			Στην περίπτωση HTTPS έχουμε ως θύρα πηγής την 51698.
+
+		\subsection*{3.7}
+			Τα τρία κοινά πεδία είναι: 
+			
+			\begin{itemize}
+				\item Content Type: 1 byte
+				\item Version: 2 bytes
+				\item Length: 2 bytes
+			\end{itemize}
+
+		\subsection*{3.8}
+			Οι διαφορετικές τιμές που καταγράφηκαν είναι:
+		
+			\begin{itemize}
+				\item Change Cipher Spec - 20
+				\item Alert - 21
+				\item Handshake - 22
+				\item Application Data - 23
+			\end{itemize}
+
+		\subsection*{3.9}
+			Οι διαφορετικοί τύποι μηνυμάτων χειραψίας είναι:
+		
+			\begin{itemize}
+				\item Client Hello - 1
+				\item Server Hello - 2
+				\item New Session Ticket - 4
+				\item Certificate - 11
+				\item Server Key Exchange - 12
+				\item Server Hello Done - 14
+				\item Client Key Exchange - 16
+				\item Encrypted Handshake Message
+			\end{itemize}
+
+		\subsection*{3.10}
+			Ο πελάτης έστειλε 1 μήνυμα Client Hello. Κάθε μήνυμα Client Hello αντιστοιχεί και σε μία σύνδεση TCP.
+
+		\subsection*{3.11}
+			Η μέγιστη έκδοση είναι η TLS 1.2.
+
+		\subsection*{3.12}
+			Το μήκος του τυχαίου αριθμού που περιέχει είναι 32 bytes. Τα πρώτα 4 είναι \verb|2e 1a 6e 1b|. Κανονικά τα 4 πρώτα bytes αναπαριστούν την χρονική στιγμή αποστολής (GMT Unix Time).
+
+		\subsection*{3.13}
+			Υπάρχουν 17 σουίτες, και οι δύο πρώτες έχουν δεκαεξαδικές τιμές: \verb|0x1301|, \verb|0x1303|.
+
+		\subsection*{3.14}
+			Θα χρησιμοποιηθεί η έκδοση TLS 1.2. Η σουίτα κωδίκων κρυπτογράφησης που τελικά επιλέχθηκε έχει όνομα \verb|TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256| και δεκαεξαδική τιμή \verb|0xc02f|.
+
+		\subsection*{3.15}
+			Το μήκος σε byte του τυχαίου αριθμού που περιέχει το μήνυμα Server Hello είναι 32. Τα πρώτα 4 bytes είναι \verb|42 63 84 18|.
+
+		\subsection*{3.16}
+			Τόσο στο Client Hello όσο και στο Server Hello, το πεδίο Compression Method έχει την τιμή \verb|null|, επομένως δεν χρησιμοποιείται συμπίεση.
+
+		\subsection*{3.17}
+			Είναι:
+			
+			\begin{itemize}
+				\item Αλγόριθμος ανταλλαγής κλειδιών: \verb|ECDHE|
+				\item Αλγόριθμος πιστοποίησης ταυτότητας: \verb|RSA|
+				\item Αλγόριθμος κρυπτογράφησης: \verb|AES_128_GCM|
+				\item Συνάρτηση κατακερματισμού: \verb|SHA256|
+			\end{itemize}
+
+		\subsection*{3.18}
+			Με βάση το πεδίο length της επικεφαλίδας, η εγγραφή TLS που μεταφέρει το πιστοποιητικό του εξυπηρετητή έχει μήκος 4278 bytes.
+
+		\subsection*{3.19}
+			Μεταφέρονται 3 πιστοποιητικά. Τα ονόματά τους είναι: 
+			
+			\begin{itemize}
+				\item Let's Encrypt, R3
+				\item Internet Security Research Group, ISRG Root X1
+				\item Digital Signature Trust Co., DST Root CA X3
+			\end{itemize}
+
+		\subsection*{3.20}
+			Χρειάστηκαν 4 πλαίσια Ethernet.
+
+		\subsection*{3.21}
+			Το μήκος και των δύο δημοσίων κλειδιών που αποστέλλουν ο πελάτης και ο εξυπηρετητής αντίστοιχα είναι 32 bytes. Τα πρώτα 5 γράμματα του κλειδιού του πελάτη είναι \verb|dda63|, ενώ του εξυπηρετητή είναι \verb|fa0f9|.			
+
+		\subsection*{3.22}
+			Το μήκος της εγγραφής είναι 6 bytes συνολικά.
+
+		\subsection*{3.23}
+			Το μήκος της εγγραφής είναι 45 bytes συνολικά.
+
+		\subsection*{3.24}
+			Ναι, παρατηρήσαμε.
+
+		\subsection*{3.25}
+			Ναι, παρατηρήσαμε από την πλευρά του υπολογιστή μας.
+
+		\subsection*{3.26}
+			Το Encrypted Alert είναι υπεύθυνο για τον τερματισμό της σύνδεσης.
+
+		\subsection*{3.27}
+			Παρατηρούμε ότι η αναζήτηση επιστρέφει αποτέλεσμα μόνο στην περίπτωση του HTTP, και όχι στην περίπτωση του HTTPS.
+
+		\subsection*{3.28}
+			\begin{itemize}
+				\item Πιστοποίηση αυθεντικότητας: Επιτυγχάνεται με την χρήση των certificates
+				\item Εμπιστευτικότητα: Επιτυγχάνεται με την κρυπτογράφηση των μηνυμάτων
+				\item Ακεραιότητα: Επιτυγχάνεται με την χρήση των hash functions
+				
+				Αυτό έρχεται σε αντίθεση με το HTTP, όπου δεν συμβαίνει τίποτα από τα παραπάνω.
+			\end{itemize}
+\end{document}

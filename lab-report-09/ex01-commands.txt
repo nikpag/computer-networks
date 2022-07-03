@@ -1,0 +1,33 @@
+=================================
+
+telnet smtp.ntua.gr 25
+HELP
+HELO cn.ntua.gr
+EHLO cn.ntua.gr
+HELP EHLO
+QUIT
+
+=================================
+
+telnet relay.ntua.gr 25
+HELO example.com
+MAIL FROM:<a_guru@of.net>
+RCPT TO:<elxxxxx@mail.ntua.gr>
+DATA
+From: netwoking@guru.org
+To: netwoking@apprentice.org
+Subject: Test Message
+
+This is a test message.
+1
+2
+3
+.
+QUIT
+
+=================================
+
+telnet relay.ntua.gr 25
+QUIT
+
+=================================

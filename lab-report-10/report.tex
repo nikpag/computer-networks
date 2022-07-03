@@ -1,0 +1,333 @@
+\input{/home/nick/latex-preambles/xelatex.tex}
+
+\newcommand{\imagesPath}{.}
+
+\title{
+	\textbf{Δίκτυα Υπολογιστών} \\~\\
+	Εργαστηριακή Άσκηση 10 \\ 
+	Σύστημα Ονομασίας Περιοχών DNS
+}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Ονοματεπώνυμο:} Νικόλαος Παγώνας, el18175 & \textbf{Ομάδα:} 4 (Τρίτη εξ' αποστάσεως) \\
+		\hline
+		\textbf{Όνομα PC/ΛΣ:} nick-ubuntu/Ubuntu 20.04.3 LTS & \textbf{Ημερομηνία:} Τρίτη 21/11/2021 \\
+		\hline
+		\textbf{Διεύθυνση IP:} \verb|192.168.1.15| & \textbf{Διεύθυνση MAC:} \verb|3c:2c:30:e1:1c:55| \\
+		\hline
+	\end{tabular}
+
+	\section*{1. Υπηρεσία DNS}
+		
+		\subsection*{1.1} 
+			Βρίσκονται στην περιοχή του ανώτατου επιπέδου.
+
+		\subsection*{1.2} 
+			Εμφανίστηκαν 13 εξυπηρετητές. Ένας από αυτούς είναι ο \verb|a.root-servers.net| με IPv4 διεύθυνση \verb|198.41.0.4| και IPv6 διεύθυνση \verb|2001:503:ba3e::2:30|.
+			
+		\subsection*{1.3} 
+			Η σύνταξη της εντολής είναι \verb|server 198.41.0.4|.
+		
+		\subsection*{1.4} 
+			Βρίσκονται ένα επίπεδο κάτω από την περιοχή ανωτάτου επιπέδου.
+
+		\subsection*{1.5} 
+			Υπάρχουν 6 εξυπηρετητές DNS για την περιοχή \verb|'gr.'| και ένας από αυτούς είναι ο \verb|gr-c.ics.forth.gr| με IPv4 διεύθυνση \verb|194.0.1.25| και IPv6 διεύθυνση \verb|2001:678:4::19|.
+
+		\subsection*{1.6} 
+			Τα αποτελέσματα είναι ίδια με του ερωτήματος 1.4.
+
+		\subsection*{1.7} 
+			Επιλέγουμε τον \verb|gr-c.ics.forth.gr|. Η σύνταξη της εντολής είναι \verb|server 194.0.1.25|.
+
+		\subsection*{1.8} 
+			Όχι, η απάντηση δεν είναι ίδια με αυτή της ερώτησης 1.6, αφού πλέον βρίσκομαι ένα επίπεδο πιο κοντά στα φύλλα, και άρα βλέπω τους υπεύθυνους servers αυτής της περιοχής.
+
+		\subsection*{1.9} 
+			Εμφανίστηκαν 5 DNS Servers, ένας από τους οποίους είναι ο \verb|ulysses.noc.ntua.gr| με IPv4 address \verb|147.102.222.230|.
+		
+		\subsection*{1.10} 
+			Ναι, η απάντηση που λαμβάνουμε είναι ίδια. 
+
+		\subsection*{1.11} 
+			Εμφανίστηκαν 3 DNS Servers, ένας από αυτούς είναι ο \verb|psyche.cn.ece.ntua.gr|.
+
+		\subsection*{1.12} 
+			\begin{itemize}
+				\item Αρχιτέκτονες Μηχανικοί (arch.ntua.gr):
+					\begin{itemize}
+						\item diomedes.noc.ntua.gr
+						\item printsrvx64.arch.ntua.gr
+						\item feidias.arch.ntua.gr
+						\item kallikratisv.arch.ntua.gr
+						\item achilles.noc.ntua.gr
+						\item ulysses.noc.ntua.gr
+					\end{itemize} 
+				\item Μηχανικοί Μεταλλείων-Μεταλλουργοί (metal.ntua.gr):
+					\begin{itemize}
+						\item ulysses.noc.ntua.gr
+						\item diomedes.noc.ntua.gr
+						\item achilles.noc.ntua.gr
+						\item serifos.metal.ntua.gr
+					\end{itemize}
+			\end{itemize}
+		
+			Παρατηρούμε ότι οι εξυπηρετητές \verb|diomedes.noc.ntua.gr, achilles.noc.ntua.gr|, και \\ \verb|ulysses.noc.ntua.gr| είναι κοινοί μεταξύ των δύο σχολών, ενώ υπάρχουν και μη-κοινοί, όπως \verb|feidias.arch.ntua.gr| και \verb|serifos.metal.ntua.gr|.
+
+		\subsection*{1.13} 
+			Ο κύριος εξυπηρετητής είναι ο \verb|psyche.cn.ece.ntua.gr| με IPv4 διεύθυνση \verb|147.102.40.1|. Ο σειριακός αριθμός είναι 2021111701. 
+
+		\subsection*{1.14} 
+			Την απάντηση μας την δίνει το πεδίο \verb|refresh = 28800 sec|, δηλαδή 8 ώρες.
+
+		\subsection*{1.15} 
+			Την απάντηση μας την δίνει το πεδίο \verb|minimum = 86400 sec|, δηλαδή 24 ώρες.
+
+		\subsection*{1.16} 
+			Ο κύριος εξυπηρετητής του ece.ntua.gr είναι ο \verb|achilles.noc.ntua.gr| με IPv4 διεύθυνση \verb|147.102.222.210|, ο σειριακός αριθμός είναι 2021100700, και τα πεδία \verb|refresh| και \verb|minimum| είναι ίσα με 86400 sec, δηλαδή 24 ώρες.
+
+		\subsection*{1.17} 
+			Τα πρώτα 8 ψηφία θα μπορούσαν να είναι η ημερομηνία (με format YYYYMMDD) και τα 2 τελευταία ψηφία θα μπορούσαν να είναι ένας αριθμός που αυξάνεται κατά 1 κάθε φορά που γίνεται η ενημέρωση των εγγραφών RR.
+
+		\subsection*{1.18} 
+			\begin{tabular}{ |c|c|c| }
+				\hline
+				Πανεπιστήμιο & Όνομα Εξυπηρετητή & IPv4 \\
+				\hline
+				ΕΚΠΑ  & www.uoa.gr   & 195.134.71.228   \\
+				\hline
+				ΠΑΠΕΙ & www.unipi.gr & 195.251.229.4    \\
+				\hline
+				ΟΠΑ   & www.aueb.gr  & 195.251.255.156  \\
+				\hline
+			\end{tabular}
+
+		\subsection*{1.19} 
+			\begin{itemize}
+				\item \verb|147.102.40.16| $\rightarrow$ \verb|trillium.cn.ece.ntua.gr|
+				\item \verb|147.102.40.17| $\rightarrow$ \verb|pegasus.cn.ece.ntua.gr|
+			\end{itemize}
+
+		\subsection*{1.20} 
+			Όχι, η αναπαράσταση της διεύθυνσης IPv4 είναι όπως περιγράφηκε στην θεωρία της εκφώνησης της άσκησης. Δηλαδή χρησιμοποιείται η περιοχή ανωτάτου επιπέδου arpa και συγκεκριμένα η υπο-περιοχή in-addr, και κάθε στάθμη κάτω από το επίπεδο in-addr.arpa αποτελεί και ένα byte της διεύθυνσης IPv4, γι' αυτό και τα byte γράφονται ανάποδα απ' ό,τι συνήθως.
+
+		\subsection*{1.21} 
+			Το κανονικό όνομα είναι \verb|gyali.metal.ntua.gr| και η διεύθυνση IPv4 είναι \verb|147.102.121.5|.
+
+		\subsection*{1.22} 
+			\begin{itemize}
+				\item achilles.noc.ntua.gr $\rightarrow$ 147.102.222.210
+				\item f0.mail.ntua.gr  $\rightarrow$ 147.102.222.195
+			\end{itemize}
+
+		\subsection*{1.23} 
+			Θα προτιμηθεί ένας εκ των \verb|f0.mail.ntua.gr, f1.mail.ntua.gr|, γιατί έχουν μικρότερο αριθμό προτίμησης (και οι δύο έχουν 10 έναντι των υπολοίπων που έχουν 100).
+
+		\subsection*{1.24} 
+			\subsubsection*{β)} 
+				Σε περιβάλλον Linux, πληκτρολογούμε \verb|dig axfr central.ntua.gr @147.102.222.210|. Το axfr σημαίνει ότι ζητάμε να μεταφερθεί ολόκληρο το αρχείο ζώνης από τον πρωτεύοντα εξυπηρετητή στον δευτερεύοντα. 
+
+		\subsection*{1.25} 
+			\begin{itemize}
+				\item \textbf{SOA} $\rightarrow$ netsrv0.central.ntua.gr. dnsmaster.central.ntua.gr. 176 21600 1800 604800 900
+				\item \textbf{TXT} $\rightarrow$ "v=spf1 ip4:147.102.222.0/24 ip6:2001:648:2000:de::/64 a -all"
+				\item \textbf{MX} $\rightarrow$ 10 ulysses.noc.ntua.gr.
+				\item \textbf{NS} $\rightarrow$ netsrv0.central.ntua.gr.
+				\item \textbf{A} $\rightarrow$ 147.102.222.46
+				\item \textbf{CNAME} $\rightarrow$ beta.central.ntua.gr.
+			\end{itemize}
+
+
+	\section*{2. Πρωτόκολλο DNS}
+	
+		\subsection*{2.1} 
+			Η σύνταξη της εντολής είναι \verb|sudo systemd-resolve --flush-caches|.
+
+		\subsection*{2.2} 
+			Η σύνταξη του φίλτρου σύλληψης είναι \verb|host 147.102.131.103|.
+
+		\subsection*{2.3} 
+			Χρησιμοποίησα τις εντολές: 
+			
+			\begin{itemize}
+				\item \verb|set domain=.|
+				\item \verb|server 147.102.40.1|
+				\item \verb|147.102.40.10|
+				\item \verb|server 147.102.7.1|
+				\item \verb|147.102.40.10|
+			\end{itemize}
+
+		\subsection*{2.4} 
+			Το όνομα του \verb|147.102.40.10| είναι \verb|titan.cn.ece.ntua.gr|.
+			
+		\subsection*{2.5} 
+			Η σύνταξη του φίλτρου απεικόνισης είναι \verb|dns|.
+
+		\subsection*{2.6} 
+			Το DNS χρησιμοποιεί το UDP.
+
+		\subsection*{2.7} 
+			Έγιναν 2 αιτήματα.
+
+		\subsection*{2.8} 
+			N/A
+	
+		\subsection*{2.9} 
+			\begin{itemize}
+				\item Αίτημα:
+					\begin{itemize}
+						\item Θύρα προέλευσης: 33696
+						\item Θύρα προορισμού: 53
+					\end{itemize}
+				\item Απόκριση:
+					\begin{itemize}
+						\item Θύρα προέλευσης: 53
+						\item Θύρα προορισμού: 33696
+					\end{itemize}
+			\end{itemize}
+
+		\subsection*{2.10} 
+			Η θύρα που αντιστοιχεί στο DNS είναι η 53.
+
+		\subsection*{2.11} 
+			Η επικεφαλίδα DNS έχει μήκος 12 bytes. 
+
+		\subsection*{2.12} 
+			Το αίτημα και η απόκριση έχουν το ίδιο Transaction ID (\verb|0xa1f4|).
+
+		\subsection*{2.13} 
+			Το πεδίο Flags έχει μήκος 2 bytes.
+
+		\subsection*{2.14} 
+			Το πρώτο bit (δηλαδή το MSB).
+
+		\subsection*{2.15} 
+			Το έκτο bit.
+	
+		\subsection*{2.16} 
+			Στο πρώτο αίτημα περιέχονται:
+			\begin{itemize}
+				\item 1 ερώτηση
+				\item 0 εγγραφές RR απαντήσεων
+				\item 0 εγγραφές RR επίσημων εξυπηρετητών
+				\item 0 εγγραφές RR επιπρόσθετες
+			\end{itemize}
+
+		\subsection*{2.17} 
+			Ναι, την περιλαμβάνει.
+
+		\subsection*{2.18} 
+			Περιλαμβάνει:
+			\begin{itemize}
+				\item 1 εγγραφή RR απαντήσεων
+				\item 3 εγγραφές RR επίσημων εξυπηρετητών
+				\item 6 εγγραφές RR επιπρόσθετες
+			\end{itemize}
+
+		\subsection*{2.19} 
+			Όχι, δεν εμφανίστηκαν.
+
+		\subsection*{2.20} 
+			Η σύνταξη του νέου φίλτρου απεικόνισης είναι \verb|dns.flags.response == 0|.
+
+		\subsection*{2.21} 
+			To \verb|www.youtube.com| φέρεται να έχει 15 διευθύνσεις.
+
+		\subsection*{2.22} 
+			Το μήνυμα αυτό περιλαμβάνει 1 ερώτηση.
+
+		\subsection*{2.23} 
+			Η απόκριση περιλαμβάνει:
+			
+			\begin{itemize}
+				\item 16 εγγραφές RR απάντησης
+				\item 4 εγγραφές RR επίσημων εξυπηρετητών
+				\item 6 εγγραφές RR επιπρόσθετες
+			\end{itemize}
+		
+			Συνολικά λοιπόν περιλαμβάνει 26 εγγραφές.
+			
+		\subsection*{2.24} 
+			15 από τις 16 εγγραφές απαντήσεων είναι απαντήσεις για την IPv4 διεύθυνση του www.youtube.com, ενώ η 1 από αυτές περιεχει το CNAME (canonical name) youtube-ui.l.google.com.
+
+		\subsection*{2.25} 
+			Υπάρχει και μία εγγραφή τύπου CNAME επειδή το www.youtube.com δεν αντιστοιχεί στο canonical name.
+
+		\subsection*{2.26} 
+			Η ιστοθέση www.youtube.com λογικά φιλοξενείται από πολλούς υπολογιστές, αφού οι αναζητήσεις οδηγούν σε πολλές διαφορετικές IPv4 διευθύνσεις.
+
+		\subsection*{2.27} 
+			Περιλαμβάνει 2 εγγραφές απάντησης, μία για τη διεύθυνση IPv6 και μία για το CNAME.
+
+		\subsection*{2.28} 
+			Περιλαμβάνει 4 εγγραφές επίσημων εξυπηρετητών. Οι επίσημοι εξυπηρετητές αυτοί είναι υπεύθυνοι για την περιοχή fastly.net
+
+		\subsection*{2.29} 
+			Επιστρέφονται 4 επιπρόσθετες εγγραφές, οι οποίες είναι τύπου A και μεταφέρουν τις διευθύνσεις IPv4 των επίσημων εξυπηρετητών DNS.
+
+		\subsection*{2.30} 
+			Ένας εκ των επίσημων εξυπηρετητών είναι ο \verb|ns1.fastly.net| με διεύθυνση IPv4 \verb|23.235.32.32|.
+
+		\subsection*{2.31} 
+			Υπάρχουν 2 εγγραφές απαντήσεων, η μία περιέχει την IPv4 διεύθυνση (147.102.224.101) και η άλλη την IPv6 (2001:648:2000:329::101) διεύθυνση του www.ntua.gr. 
+
+		\subsection*{2.32} 
+			Η απόκριση περιέχει 4 εγγραφές αρχής πληροφόρησης.
+
+		\subsection*{2.33} 
+			Το mname του κύριου εξυπηρετητή DNS της περιοχής cslab.ntua.gr είναι danaos.cslab.ece.ntua.gr και το rname είναι root.danaos.cslab.ece.ntua.gr.
+
+		\subsection*{2.34} 
+			Άλλοι επίσημοι εξυπηρετητές είναι οι ulysses.noc.ntua.gr, diomedes.noc.ntua.gr και achilles.noc.ntua.gr.
+
+		\subsection*{2.35} 
+			Η απόκριση σχετικά με το κανονικό όνομα του www.cn.ntua.gr περιέχει συνολικά 10 εγγραφές. Το κανονικό όνομα του www.cn.ntua.gr είναι www.cn.ece.ntua.gr.
+
+		\subsection*{2.36} 
+			Η απόκριση σχετικά με τους αρμόδιους εξυπηρετητές ηλεκτρονικού ταχυδρομείου της περιοχής elab.ntua.gr περιέχει συνολικά 12 εγγραφές. Οι τρεις εξυπηρετητές είναι ισοδύναμοι, καθώς και οι τρεις έχουν preference 20.
+
+		\subsection*{2.37} 
+			Έγινε 1 αίτημα και λήφθηκαν 2 αποκρίσεις, ενώ χρησιμοποιήθηκε TCP αυτή τη φορά.
+
+		\subsection*{2.38} 
+			Για το αίτημα:
+			
+			\begin{itemize}
+				\item Θύρα προέλευσης: 38105
+				\item Θύρα προορισμού: 53
+			\end{itemize}
+			
+			Για τις αποκρίσεις:
+			
+			\begin{itemize}
+				\item Θύρα προέλευσης: 53
+				\item Θύρα προορισμού: 38105
+			\end{itemize}
+
+		\subsection*{2.39} 
+			Το μήκος του αιτήματος είναι 60 bytes.
+
+		\subsection*{2.40} 
+			Ο τύπος του αιτήματος είναι AXFR (Zone Transfer), και με αυτόν τον τρόπο αιτούμαστε την μεταφορά του αρχείου περιοχής από τον πρωτεύοντα εξυπηρετητή στον δευτερεύοντα.
+
+		\subsection*{2.41} 
+			Η μία απόκριση έχει μήκος 125 bytes (1 μήνυμα DNS) και η άλλη 787 bytes (8 μηνύματα DNS).
+
+		\subsection*{2.42} 
+			Το καταλαβαίνουμε γιατί οι αποκρίσεις έχουν ίδιο Transaction ID με το αίτημα.
+
+		\subsection*{2.43} 
+			Όλα τα μηνύματα DNS (response) περιέχουν μία εγγραφή RR απάντησης και μία εγγραφή RR επιπρόσθετη.
+			
+		\subsection*{2.44}
+			 Επειδή το TCP είναι πιο αξιόπιστο, ειδικά όταν μεταφέρουμε μεγάλα πακέτα όπως αυτά που συμμετέχουν σε ένα zone transfer.
+
+		\subsection*{2.45} 
+			Το φίλτρο σύλληψης είναι \verb|port 53|.
+\end{document}

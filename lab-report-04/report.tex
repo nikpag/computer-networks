@@ -1,0 +1,257 @@
+\input{/home/nick/latex-preambles/xelatex.tex}
+
+\newcommand{\imagesPath}{.}
+
+\title{
+	\textbf{Δίκτυα Υπολογιστών} \\~\\
+	Εργαστηριακή Άσκηση 4 \\ 
+	Πρωτόκολλο IPv4 και θρυμματισμός
+}
+\author{}
+\date{}
+
+\begin{document}
+	\maketitle
+	
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Ονοματεπώνυμο:} Νικόλαος Παγώνας, el18175 & \textbf{Ομάδα:} 4 (Τρίτη εξ' αποστάσεως) \\
+		\hline
+		\textbf{Όνομα PC/ΛΣ:} nick-ubuntu/Ubuntu 20.04.3 LTS & \textbf{Ημερομηνία:} Τρίτη 02/11/2021  \\
+		\hline
+		\textbf{Διεύθυνση IP:} \verb|192.168.1.15| & \textbf{Διεύθυνση MAC:} \verb|3c:2c:30:e1:1c:55|\\
+		\hline
+	\end{tabular}
+
+	\section*{1 - Μετρήστε την καθυστέρηση}
+		
+		\subsection*{1.1}
+			\verb|ping -4 -c 3 www.mit.edu|
+	
+		\subsection*{1.2}
+			Με το φίλτρο \verb|not multicast and not broadcast| ουσιαστικά καταγράφουμε μόνο τα unicast πακέτα, ώστε να αφαιρέσουμε τον "θόρυβο" που εισάγουν οι broadcast και multicast εκπομπές, αφού μας ενδιαφέρει μόνο η κίνηση από και προς το μηχάνημά μας. 
+			
+
+		\subsection*{1.3}
+			Έχουμε: 0\% packet loss, μέση καθυστέρηση 41.458 ms
+
+		\subsection*{1.4}
+			\begin{itemize}
+				\item 64 bytes from 23.79.130.108: icmp\_seq=1 ttl=58 time=41.2 ms
+				\item 64 bytes from 23.79.130.108: icmp\_seq=2 ttl=58 time=42.2 ms
+				\item 64 bytes from 23.79.130.108: icmp\_seq=3 ttl=58 time=41.0 ms
+				
+			\end{itemize}
+		
+		\subsection*{1.5}
+			Mε το Wireshark έχουμε αντίστοιχα:
+			\begin{itemize}
+				\item time = 0.0412
+				\item time = 0.0421
+				\item time = 0.0409
+			\end{itemize}
+			
+			Οι τιμές είναι πρακτικά οι ίδιες.
+
+		\subsection*{1.6}
+			Για να βλέπουμε μόνο πακέτα IPv4, μπορούμε να εφαρμόσουμε το φίλτρο απεικόνισης \verb|ip.version == 4|
+
+		\subsection*{1.7}
+			Πρέπει να εφαρμόσουμε το φίλτρο: \\
+			\verb+icmp && (ip.src == 23.79.130.108 || ip.dest == 23.79.130.108)+ \\
+			ώστε να βλέπουμε μόνο ICMP πακέτα, και είτε η πηγή είτε ο προορισμός να αφορούν την IPv4 διεύθυνση του www.mit.edu. 
+
+		\subsection*{1.8} 
+			Στάλθηκαν μηνύματα ICMP Echo Request.
+
+		\subsection*{1.9}
+			Διεύθυνση πηγής είναι η 192.168.1.15, ενώ διεύθυνση προορισμού είναι η 23.79.130.108.
+
+		\subsection*{1.10}
+			Στάλθηκαν μηνύματα ICMP Echo Reply.
+
+		\subsection*{1.11}
+			Διεύθυνση πηγής είναι η 23.79.130.108, ενώ διεύθυνση προορισμού είναι η 192.168.1.15.
+			
+		\subsection*{1.12}
+			Παρατηρούμε ότι έχει αλλάξει η διεύθυνση IPv4 του www.mit.edu από 18.7.22.83 σε 23.79.130.108.
+
+	\section*{2 - Περισσότερα για το ping}
+
+		\subsection*{2.1}
+			Η ακριβής σύνταξη της εντολής που χρησιμοποιήσαμε είναι: \\~\\
+			\verb|ping -4 -c 5 192.168.1.7 && ping -4 -c 5 192.168.1.15 && ping -4 -c 5 127.0.0.1|
+			\\~\\
+			όπου 192.168.1.7 μία συσκευή στο τοπικό μας δίκτυο, 192.168.1.15 η κάρτα δικτύου του υπολογιστή μας και 127.0.0.1 ο βρόχος επιστροφής.
+
+		\subsection*{2.2}
+			Έχουν καταγραφεί 5 ICMP Request. 
+			
+		\subsection*{2.3}
+			Ο προορισμός ήταν 192.168.1.7 (η συσκευή του τοπικού μας δικτύου).
+
+		\subsection*{2.4}
+			Δεν παρατηρήσαμε αποστολή μηνυμάτων ICMP Echo Request που έχουν πηγή και προορισμό την διεύθυνση IPv4 του υπολογιστή μας, γιατί όπως βλέπουμε και στο σχήμα, τα πακέτα προωθούνται στον οδηγό loopback, οπότε δεν καταγράφονται από το Wireshark.
+
+		\subsection*{2.5}
+			Για τον ίδιο λόγο, δεν παρατηρούμε αποστολή μηνυμάτων ICMP Echo Request ούτε σε αυτήν την περίπτωση.
+
+		\subsection*{2.6}
+			Η διαφορά είναι πως όταν κάνουμε ping στην διεύθυνση loopback, τα πακέτα δεν φεύγουν ποτέ από τον υπολογιστή μας, ενώ όταν κάνουμε ping την 192.168.1.15, το πακέτο περνάει από τον οδηγό Ethernet (παρόλο που στην συνέχεια θα προωθηθεί και πάλι στον οδηγό loopback).
+
+		\subsection*{2.7}
+			Παρατηρούμε ότι ενώ η σελίδα www.netflix.com φορτώνει κανονικά στον browser, όταν πάμε να κάνουμε ping request δεν λαμβάνουμε απάντηση. Αντίθετα, η σελίδα www.amazon.com φορτώνει στον browser και απαντάει σε ping requests. \\
+			
+			Μία υπόθεση είναι ότι το δίκτυο του netflix (ή κάποιο ενδιάμεσο firewall) μπλοκάρει τα ping requests για λόγους ασφαλείας/προστασίας του δικτύου.
+
+	
+	\section*{3 - Επικεφαλίδες IPv4}
+
+		\subsection*{3.1}
+			Η σύνταξη του φίλτρου σύλληψης είναι: \verb|host 147.102.40.15|.
+
+		\subsection*{3.2}
+			Η σύνταξη του φίλτρου απεικόνισης είναι: \verb|ip.src == 192.168.1.15 && ip.version == 4|			
+
+		\subsection*{3.3} 
+			\begin{itemize}
+				\item Version: 4 bit
+				\item Header Length: 4 bit
+				\item Differentiated Services Field: 1 byte (DSCP 6 bit, ECN 2 bit)
+				\item Total Length: 2 byte
+				\item Identification: 2 byte
+				\item Flags: 3 bit 
+				\item Fragment Offset: 13 bit
+				\item Time to Live: 1 byte
+				\item Protocol: 1 byte
+				\item Header Checksum: 2 byte
+				\item Source (IP) Address: 4 byte
+				\item Destination (IP) Address: 4 byte
+			\end{itemize}
+			
+		\subsection*{3.4}
+			Αλλάζουν τα:
+			\begin{itemize}
+				\item Differentiated Services Field
+				\item Total Length
+				\item Identification
+				\item Time to Live
+				\item Header Checksum
+				\item Source Address (εναλλάσσεται μεταξύ των δύο εμπλεκόμενων διευθύνσεων)
+				\item Destination Address (εναλλάσσεται μεταξύ των δύο εμπλεκόμενων διευθύνσεων)
+			\end{itemize}
+
+		\subsection*{3.5}
+			Ναι, είναι το ίδιο.
+
+		\subsection*{3.6}
+			Το μικρότερο μήκος πακέτου είναι 40 bytes και το μεγαλύτερο 146 bytes.
+
+		\subsection*{3.7}
+			Το πεδίο Differentiated Services Field έχει τιμή 0x00 (Standard) ή 0x10 (CS2)
+
+		\subsection*{3.8}
+			Είναι διαφορετικό για κάθε πακέτο.
+
+		\subsection*{3.9}
+			Η τιμή της σημαίας Don't Fragment είναι 1.
+
+		\subsection*{3.10}
+			Το πεδίο Fragment offset έχει τιμή 0.
+
+		\subsection*{3.11}
+			Το πεδίο Protocol έχει τιμή 6 και αντιστοιχεί στο πρωτόκολλο TCP.
+
+		\subsection*{3.12}
+			Το Header Checksum εξαρτάται από τις τιμές των πεδίων της επικεφαλίδας, και εφόσον αυτές είναι διαφορετικές από πακέτο σε πακέτο (για παράδειγμα το Identification είναι διαφορετικό για κάθε πακέτο), τότε είναι λογικό να αλλάζει και η τιμή του Header Checksum.
+
+	
+	\section*{4 - Θρυμματισμός (Fragmentation) στο IPv4}
+	
+		\subsection*{4.1}
+			\verb|ping -M do -4 -c 1 -s <desirable size> aaaa.bbbb.cccc.dddd|
+
+		\subsection*{4.2}
+			Η μέγιστη τιμή για την οποία επιτυγχάνει η αποστολή είναι 1472. 
+
+		\subsection*{4.3}
+			Η μικρότερη τιμή για την οποία απαιτείται θρυμματισμός είναι 1473.
+
+		\subsection*{4.4}
+			\verb|not broadcast and not multicast|
+
+		\subsection*{4.5}
+			\verb+(ip.src == 192.168.1.7 || ip.dst == 192.168.1.7) && ip.version == 4+
+
+		\subsection*{4.6}
+			 Δεν παράγονται πακέτα IPv4 διότι ο έλεγχος για υπέρβαση του MTU γίνεται προτού το πακέτο σταλεί στο τοπικό δίκτυο. 
+
+		\subsection*{4.7}
+			Παρατηρούμε ότι όταν δίνουμε την τιμή 1472 στο ping, το Wireshark καταγράφει μέγεθος δεδομένων 1500 bytes, άρα MTU = 1500 bytes.
+
+		\subsection*{4.8}
+			Το μέγιστο μέγεθος IPv4 πακέτου είναι 65.535 bytes. Αν αφαιρέσουμε τις επικεφαλίδες IPv4 και ICMP μας μένουν 65.535 - 20 - 8 = 65.507 bytes. Επομένως η τιμή 65.507 οδηγεί σε πακέτο μέγιστου μήκους.
+
+		\subsection*{4.9}
+			Το ping στην διεύθυνση του υπολογιστή μας επιτυγχάνει.
+
+		\subsection*{4.10}
+			Το μέγιστο μέγεθος πακέτου που μπορεί να παράγει η εντολή ping είναι 65.535 bytes.
+
+		\subsection*{4.11}
+			Όχι, δεν έχει μεταφερθεί ως ένα πακέτο IPv4.
+
+		\subsection*{4.12}
+			Εδώ απαιτείται fragmentation (κάτι που αυτή τη φορά επιτρέπεται). Έχουμε $\left\lceil \dfrac{6000}{1472} \right\rceil = 5$ πακέτα. 
+
+		\subsection*{4.13}
+			\begin{tabular}{|c|c|c|c|}
+				\hline
+				Identification & Don't fragment Bit & More fragments Bit & Fragment Offset \\
+				\hline
+				\hline				
+				0x870b & 0 & 1 & 0 \\ 
+				\hline
+				0x870b & 0 & 1 & 1480 \\
+				\hline
+				0x870b & 0 & 1 & 2960 \\
+				\hline
+				0x870b & 0 & 1 & 4440 \\
+				\hline
+				0x870b & 0 & 0 & 5920 \\
+				\hline
+			\end{tabular}
+
+		\subsection*{4.14}
+			Βλέπουμε ότι το πακέτο έχει θρυμματιστεί από το More Fragments Bit = 1 ή το Don't fragment = 0.
+
+		\subsection*{4.15}
+			Μπορούμε να καταλάβουμε ότι πρόκειται για το πρώτο θραύσμα από το Fragment Offset = 0.
+
+		\subsection*{4.16}
+			Το μήκος του πρώτου θραύσματος είναι 1514 bytes.
+
+		\subsection*{4.17}
+			Βλέπουμε ότι δεν πρόκειται για το πρώτο θραύσμα από το Fragment Offset = 1480 (δηλαδή $\neq$ 0).
+
+		\subsection*{4.18}
+			Ναι, ακολουθούν κι άλλα θραύσματα.
+
+		\subsection*{4.19}
+			Φαίνεται ότι ακολουθούν κι άλλα θραύσματα από το More Fragments bit = 1.
+
+		\subsection*{4.20}
+			Fragment Offset και Header Checksum
+
+		\subsection*{4.21}
+			Κάθε πακέτο εισάγει στο offset: μήκος δεδομένων 1472 bytes και μήκος επικεφαλίδας ICMP 8 bytes, άρα
+			
+			\begin{itemize}
+				\item Προτελευταίο (4ο πακέτο, έχουν προηγηθεί 3 πακέτα): 3 $\times$ (1472 + 8) = 4440 bytes 
+				\item Τελευταίο (5ο πακέτο, έχουν προηγηθεί 4 πακέτα): 4 $\times$ (1472 + 8) = 5920 bytes
+			\end{itemize} 
+
+		\subsection*{4.22}
+			Τα πεδία που αλλάζουν μεταξύ των θραυσμάτων είναι: Total Length, Flags, Fragment Offset, Header Checksum.
+
+\end{document}
